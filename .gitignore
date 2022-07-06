@@ -1,0 +1,9 @@
+# Project exclude paths
+/.gradle/
+/manyCommands/build/
+/manyCommands/build/classes/java/main/
+/manyCommands/build/classes/java/test/
+# Project exclude paths
+/MariaDBKotlin-core/build/
+/MariaDBKotlin-core/build/classes/kotlin/main/
+/MariaDBKotlin-core/build/classes/kotlin/test/
