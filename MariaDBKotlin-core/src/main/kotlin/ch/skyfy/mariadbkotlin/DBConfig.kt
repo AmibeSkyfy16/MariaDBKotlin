@@ -2,6 +2,7 @@ package ch.skyfy.mariadbkotlin
 
 import org.apache.commons.lang3.SystemUtils
 
+@Suppress("unused")
 class DBConfig private constructor(
     val port: Int,
     val mariadbVersion: MariaDBVersion,
@@ -9,7 +10,8 @@ class DBConfig private constructor(
     var mariaDBFolder: String,
     var mariaDBFolderAsZip: String,
     var dataDir: String,
-    val os: OS
+    val os: OS,
+    val isRunInThread: Boolean
 ) {
 
     enum class OS {
@@ -37,7 +39,8 @@ class DBConfig private constructor(
         var mariaDBFolderAsZip: String = installationDir + "/${mariaDBVersion.filename}",
         var mariaDBFolder: String = mariaDBFolderAsZip.replace("\\.\\w+$".toRegex(), ""),
         var dataDir: String = "$mariaDBFolder/data",
-        var os: OS = if (SystemUtils.IS_OS_WINDOWS) OS.WINDOWS else OS.LINUX
+        var os: OS = if (SystemUtils.IS_OS_WINDOWS) OS.WINDOWS else OS.LINUX,
+        var isRunInThread: Boolean = false
     ) {
         fun port(port: Int) = apply { this.port = port }
         fun mariaDBVersion(mariaDBVersion: MariaDBVersion) = apply { this.mariaDBVersion = mariaDBVersion }
@@ -45,7 +48,8 @@ class DBConfig private constructor(
         fun mariaDBFolder(mariaDBFolder: String) = apply { this.mariaDBFolder = mariaDBFolder }
         fun dataDir(dataDir: String) = apply { this.dataDir = dataDir }
         fun os(os: OS) = apply { this.os = os }
-        fun build() = DBConfig(port, mariaDBVersion, installationDir, mariaDBFolder, mariaDBFolderAsZip, dataDir, os)
+        fun isRunInThread(isRunInThread: Boolean) = apply { this.isRunInThread = isRunInThread }
+        fun build() = DBConfig(port, mariaDBVersion, installationDir, mariaDBFolder, mariaDBFolderAsZip, dataDir, os, isRunInThread)
     }
 
 }

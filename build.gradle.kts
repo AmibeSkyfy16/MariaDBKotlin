@@ -15,6 +15,11 @@ allprojects {
         mavenLocal()
 
         dependencies {
+
+            implementation("org.apache.logging.log4j:log4j-core:2.18.0")
+            implementation("org.apache.logging.log4j:log4j-api:2.18.0")
+
+
             testImplementation("org.jetbrains.kotlin:kotlin-test:1.7.0")
             testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.3")
             testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
@@ -73,8 +78,10 @@ configure(subprojects.filter {
                 implementation("net.lingala.zip4j:zip4j:2.11.1")
                 implementation("org.jetbrains.kotlin:kotlin-reflect:1.7.0")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.3")
-                runtimeOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.3")
 
+                implementation("org.mariadb.jdbc:mariadb-java-client:3.0.5")
+                implementation("org.ktorm:ktorm-core:3.5.0")
+                implementation("org.ktorm:ktorm-support-mysql:3.5.0")
 
                 implementation("commons-io:commons-io:2.11.0")
                 implementation("org.apache.commons:commons-lang3:3.12.0")
